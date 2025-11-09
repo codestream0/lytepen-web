@@ -20,13 +20,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import Link from "next/link";
 
 
 
 export default function Home() {
   const [topEmail,setTopEmail] = useState("")
+  const [bottomEmail,setBottomEmail] = useState("")
   
   return (
+    <div>
     <div className="min-h-screen px-20 py-4 bg-[#0A0E27]">
 
       <div className="flex justify-between items-center mb-20 px-5">
@@ -75,9 +78,32 @@ export default function Home() {
       <div className="mt-24" >
         <h1 className="font-galdeano text-white font-normal text-4xl">Frequently Asked Questions</h1>
         <div className="mt-10" >
-          <AccordionDemo/>
+          <AccordionDemo id="item-1" title="What is Lytepen?" description="Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts." />
+          <AccordionDemo id="item-2" title="How much does Lytepen cost?" description="Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts." />
+          <AccordionDemo id="item-3" title="Which device can I use Lytepen on?" description="Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts." />
+          <AccordionDemo id="item-4" title="If Lytepen is free, how do I earn as an author or audiobook creator?" description="Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts." />
+          <AccordionDemo id="item-5" title="Is Lytepen good for kids" description="Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts." />
+
         </div>
       </div>
+
+      <div className="place-items-center mt-14 " >
+        <p className="text-[#B0B3C7] font-inter text-[12px]  ">Ready to read or listen? Enter your email to join our early adopters</p>  
+        <div className=" ml-10 gap-3 mt-6 mb-16 flex ">
+          <Input 
+            placeholder="email address"
+            value={bottomEmail}
+            onChange={(e)=>setBottomEmail(e.target.value) }
+            className="border-[#2A2F4A] text-[#CCCCCC] w-2/4 "
+            required
+          />
+          <GradientButton />    
+        </div>
+      </div>
+    </div>
+    <div>
+      <Footer/>
+    </div>
     </div>
   );
 }
@@ -104,54 +130,44 @@ const ReasonCard=({icon,title,description}:{icon:ReactNode,title:string,descript
 }
 
 
-
-
-const AccordionDemo=()=> {
+const AccordionDemo=({title,description,id}:{title:string,description:string,id:string})=> {
   return (
     <Accordion
       type="single"
       collapsible
-      className="w-full  rounded-lg "
-      defaultValue="item-1"
+      className="w-full rounded-lg "
+      
     >
-      <AccordionItem className="mb-20 border-none bg-[#151A35] px-7 items-center rounded-lg " value="item-1">
-        <AccordionTrigger className="text-white font-normal font-inter text-[20px] ">What is Lytepen?</AccordionTrigger>
+      <AccordionItem className="mb-7 border-none bg-[#151A35] px-7 items-center rounded-lg " value={id}>
+        <AccordionTrigger className="text-white font-normal font-inter text-[20px] ">{title}</AccordionTrigger>
         <AccordionContent className="flex flex-col gap-4 text-balance">
-          <p className="text-[#B0B3C7] font-inter font-normal text-[15px] " >
-            Key features include advanced processing capabilities, and an
-            intuitive user interface designed for both beginners and experts.
+          <p className="text-[#B0B3C7] font-inter font-normal " >
+            {description}
           </p>
         </AccordionContent>
       </AccordionItem>
-      {/* <AccordionItem value="item-2">
-        <AccordionTrigger>Shipping Details</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
-          <p>
-            We offer worldwide shipping through trusted courier partners.
-            Standard delivery takes 3-5 business days, while express shipping
-            ensures delivery within 1-2 business days.
-          </p>
-          <p>
-            All orders are carefully packaged and fully insured. Track your
-            shipment in real-time through our dedicated tracking portal.
-          </p>
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-3">
-        <AccordionTrigger>Return Policy</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">
-          <p>
-            We stand behind our products with a comprehensive 30-day return
-            policy. If you&apos;re not completely satisfied, simply return the
-            item in its original condition.
-          </p>
-          <p>
-            Our hassle-free return process includes free return shipping and
-            full refunds processed within 48 hours of receiving the returned
-            item.
-          </p>
-        </AccordionContent>
-      </AccordionItem> */}
     </Accordion>
+  )
+}
+
+
+function Footer () {
+  return(
+    <div className="bg-[#151A35] min-h-72 px-20 py-7 " >
+      <h1 className="text-white font-inter font-semibold text-center " >Questions? Contact Us.</h1>
+      <div className="text-[#B0B3C7] mb-12 mt-14 ml-5 grid grid-cols-3 gap-3 font-inter font-normal text-[12px] " >
+        <Link href="#">FAQs</Link>
+        <Link href="#"> Help Center </Link>
+        <Link href="#">Account</Link>
+         <Link href="#">For Investors</Link>
+        <Link href="#">Jobs</Link>
+        <Link href="#">Media Center</Link>
+        <Link href="#">Privacy</Link>
+        <Link href="#">Corporate Information</Link>
+        <Link href="#">Terms of Use</Link>
+        {/* <Link href="#">English</Link> */}
+    </div>
+      <p className="text-[#B0B3C7] font-inter text-[11px] text-center " >Lytepen Technologies Limited</p>
+    </div>
   )
 }

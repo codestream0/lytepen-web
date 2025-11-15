@@ -47,7 +47,7 @@ export default function Home() {
             placeholder="email address"
             value={topEmail}
             onChange={(e)=>setTopEmail(e.target.value) }
-            className="border-[#2A2F4A] text-[#CCCCCC] w-2/4 "
+            className="border-[#2A2F4A] text-[#CCCCCC] w-3/4 "
             required
           />
           <GradientButton/>      
@@ -62,6 +62,9 @@ export default function Home() {
           <TrendingBook src={waterBaby} description="Water Baby" alt="waterBaby" />
           <TrendingBook src={ruwanBagaja} description="Ruwan Bagaja" alt="ruwanBagaja" />
           <TrendingBook src={auraForAura} description="Aura for Aura" alt="auraForAura" />
+          <TrendingBook src={unUsualGrief} description="An unusual grief " alt="unUsualGrief" />
+          <TrendingBook src={unUsualGrief} description="An unusual grief " alt="unUsualGrief" />
+          <TrendingBook src={unUsualGrief} description="An unusual grief " alt="unUsualGrief" />
           <TrendingBook src={unUsualGrief} description="An unusual grief " alt="unUsualGrief" />
         </div>
       </div>
@@ -88,13 +91,13 @@ export default function Home() {
       </div>
 
       <div className="place-items-center mt-14 " >
-        <p className="text-[#B0B3C7] font-inter text-[12px]  ">Ready to read or listen? Enter your email to join our early adopters</p>  
-        <div className=" ml-10 gap-3 mt-6 mb-16 flex ">
+        <p className="text-[#B0B3C7] font-inter text-[12px] ">Ready to read or listen? Enter your email to join our early adopters</p>  
+        <div className=" gap-3 mt-6 mb-16 flex ">
           <Input 
             placeholder="email address"
             value={bottomEmail}
             onChange={(e)=>setBottomEmail(e.target.value) }
-            className="border-[#2A2F4A] text-[#CCCCCC] w-2/4 "
+            className="border-[#2A2F4A] text-[#CCCCCC] w-3/4 "
             required
           />
           <GradientButton />    
@@ -121,7 +124,7 @@ const TrendingBook=({src,description,alt}:{src: string | StaticImageData, descri
 
 const ReasonCard=({icon,title,description}:{icon:ReactNode,title:string,description:string})=>{
   return(
-    <Card className=" bg-[#151A35] min-w-[330px] px-7 py-10 border-[#2A2F4A]">
+    <Card className=" bg-[#151A35] max-w-[390px] px-7 py-10 border-[#2A2F4A] hover ">
       <button className="  bg-[#FF9800] px-3 py-3 rounded-lg w-[50px] text-center " >{icon}</button>
       <h1 className="font-galdeano text-white font-normal text-[20px] " >{title}</h1>
       <p className="font-galdeano text-[#B0B3C7] font-normal text-[15px] " >{description}</p>
